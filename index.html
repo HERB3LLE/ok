@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ㅋㅋㅋ</title>
 
   <style>
@@ -14,8 +15,8 @@
       margin: 0;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       background: white;
       font-family: sans-serif;
     }
@@ -46,13 +47,37 @@
 <body>
   <div class="container">
     <div id="message">인 줄 알았지? ㅋ</div>
-    <img id="photo" src="153F921D-E374-4661-9ED0-B840F08D2842.jpeg" alt="사진">
+    <img id="photo"
+      src="153F921D-E374-4661-9ED0-B840F08D2842.jpeg"
+      alt="사진">
   </div>
 
   <script>
+    const firstPhoto =
+      "153F921D-E374-4661-9ED0-B840F08D2842.jpeg";
+
+    const secondPhoto = "photo-output.jpeg";
+
+    const photo = document.getElementById("photo");
+    const message = document.getElementById("message");
+
+    // 두 번째 사진을 미리 불러오기
+    const preload = new Image();
+    preload.src = secondPhoto;
+
+    function reveal() {
+      // 사진과 글씨를 같은 순간에 변경
+      photo.src = secondPhoto;
+      message.style.display = "block";
+    }
+
+    // 2초 뒤 변경. 사진이 아직 로딩 중이면 로딩 완료 후 변경
     setTimeout(() => {
-      document.getElementById("message").style.display = "block";
-      document.getElementById("photo").src = "photo-output.jpeg";
+      if (preload.complete && preload.naturalWidth > 0) {
+        reveal();
+      } else {
+        preload.onload = reveal;
+      }
     }, 2000);
   </script>
 </body>
