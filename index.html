@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ㅋㅋㅋ</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      font-family: sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #message {
+      color: red;
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      display: none;
+    }
+
+    #photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="message">인 줄 알았지? ㅋ</div>
+
+    <img id="photo" src="first.jpg" alt="사진">
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("message").style.display = "block";
+      document.getElementById("photo").src = "second.jpg";
+    }, 2000);
+  </script>
+</body>
+</html>
