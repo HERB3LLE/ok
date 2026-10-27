@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -65,17 +66,17 @@
     const photo = document.getElementById("photo");
     const message = document.getElementById("message");
 
+    // 두 번째 사진 미리 불러오기
     const secondPhoto = new Image();
     secondPhoto.src = "photo-output.jpeg";
 
-    // 두 번째 사진을 미리 디코딩
-    const ready = secondPhoto.decode().catch(() => {});
+    secondPhoto.decode().catch(() => {});
 
-    // 페이지가 열린 뒤 1.5초 후 동시에 전환
+    // 페이지가 열린 뒤 1.25초 후 전환
     setTimeout(() => {
       photo.src = "photo-output.jpeg";
       message.style.display = "block";
-    }, 1500);
+    }, 1250);
   </script>
 </body>
 </html>
