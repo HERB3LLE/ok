@@ -17,30 +17,29 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #fff;
+      background: white;
       font-family: sans-serif;
     }
 
     .container {
       width: 100%;
-      max-width: 600px;
-      padding: 20px;
+      max-width: 650px;
+      padding: 16px;
       text-align: center;
     }
 
     #message {
-      color: red;
-      font-size: 30px;
-      font-weight: 900;
-      margin-bottom: 18px;
       display: none;
+      color: red;
+      font-size: clamp(26px, 7vw, 42px);
+      font-weight: 900;
+      margin-bottom: 16px;
     }
 
     #photo {
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 4px;
     }
   </style>
 </head>
@@ -48,8 +47,7 @@
 <body>
   <div class="container">
     <div id="message">인 줄 알았지? ㅋ</div>
-
-    <img id="photo" src="40859855-1340-4026-9853-EEAE04AB71B7.jpeg" alt="사진">
+    <img id="photo" src="153F921D-E374-4661-9ED0-B840F08D2842.jpeg" alt="사진">
   </div>
 
   <script>
