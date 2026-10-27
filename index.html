@@ -1,10 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ㅋㅋㅋ</title>
+
+  <!-- 두 번째 사진 미리 불러오기 -->
+  <link
+    rel="preload"
+    as="image"
+    href="photo-output.jpeg"
+  >
 
   <style>
     * {
@@ -15,10 +21,10 @@
       margin: 0;
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       background: white;
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     .container {
@@ -47,38 +53,29 @@
 <body>
   <div class="container">
     <div id="message">인 줄 알았쥐? ㅋ</div>
-    <img id="photo"
+
+    <img
+      id="photo"
       src="153F921D-E374-4661-9ED0-B840F08D2842.jpeg"
-      alt="사진">
+      alt="사진"
+    >
   </div>
 
   <script>
-    const firstPhoto =
-      "153F921D-E374-4661-9ED0-B840F08D2842.jpeg";
-
-    const secondPhoto = "photo-output.jpeg";
-
     const photo = document.getElementById("photo");
     const message = document.getElementById("message");
 
-    // 두 번째 사진을 미리 불러오기
-    const preload = new Image();
-    preload.src = secondPhoto;
+    const secondPhoto = new Image();
+    secondPhoto.src = "photo-output.jpeg";
 
-    function reveal() {
-      // 사진과 글씨를 같은 순간에 변경
-      photo.src = secondPhoto;
-      message.style.display = "block";
-    }
+    // 두 번째 사진을 미리 디코딩
+    const ready = secondPhoto.decode().catch(() => {});
 
-    // 2초 뒤 변경. 사진이 아직 로딩 중이면 로딩 완료 후 변경
+    // 페이지가 열린 뒤 1.5초 후 동시에 전환
     setTimeout(() => {
-      if (preload.complete && preload.naturalWidth > 0) {
-        reveal();
-      } else {
-        preload.onload = reveal;
-      }
-    }, 1250);
+      photo.src = "photo-output.jpeg";
+      message.style.display = "block";
+    }, 1500);
   </script>
 </body>
 </html>
